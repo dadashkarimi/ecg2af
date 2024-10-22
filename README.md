@@ -1,2 +1,7 @@
-# ECG2AF
-ECG2AF predicts the risk of developing atrial fibrillation (AF) 
+# ECG2AF Prediction Results
+
+This repository shows the output of the ECG2AF model.
+
+## Example Results
+
+![Prediction results](fig/result.png)
