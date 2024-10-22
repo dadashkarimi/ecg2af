@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Results</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Prediction Results</h2>
+
+        <!-- Prediction Table -->
+        <table>
+            <tr>
+                <th>Prediction</th>
+                <th>Value</th>
+            </tr>
+            <tr>
+                <td>AF Risk</td>
+                <td>{{ "%.4f" | format(af_risk) }}</td>
+            </tr>
+            <tr>
+                <td>Sex Prediction (Male)</td>
+                <td>{{ "%.4f" | format(sex_pred_male) }}</td>
+            </tr>
+            <tr>
+                <td>Sex Prediction (Female)</td>
+                <td>{{ "%.4f" | format(sex_pred_female) }}</td>
+            </tr>
+            <tr>
+                <td>Age Prediction</td>
+                <td>{{ "%.4f" | format(age_pred) }}</td>
+            </tr>
+            <tr>
+                <td>AF In Read (No)</td>
+                <td>{{ "%.4f" | format(af_read_no) }}</td>
+            </tr>
+            <tr>
+                <td>AF In Read (Yes)</td>
+                <td>{{ "%.4f" | format(af_read_yes) }}</td>
+            </tr>
+        </table>
+
+        <!-- Bar Chart -->
+        <h3>Prediction Chart</h3>
+        <div id="chartContainer">
+            <canvas id="predictionChart"></canvas>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+            var ctx = document.getElementById('predictionChart').getContext('2d');
+            var predictionChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['AF Risk', 'Sex (Male)', 'Sex (Female)', 'Age', 'AF In Read (No)', 'AF In Read (Yes)'],
+                    datasets: [{
+                        label: 'Prediction Values',
+                        data: [
+                            {{ af_risk }},
+                            {{ sex_pred_male }},
+                            {{ sex_pred_female }},
+                            {{ age_pred }},
+                            {{ af_read_no }},
+                            {{ af_read_yes }}
+                        ],
+                        backgroundColor: [
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(153, 102, 255, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(153, 102, 255, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    },
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
+            });
+        </script>
+
+        <a href="/">Go back to upload another file</a>
+    </div>
+</body>
+</html>
+

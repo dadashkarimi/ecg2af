@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload ECG File</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Upload ECG File</h2>
+        
+        <!-- Drag-and-Drop Zone -->
+        <form id="upload-form" method="POST" action="/upload" enctype="multipart/form-data">
+            <div class="drop-zone" id="drop-zone">
+                <p id="drop-zone-text">Drag and drop your .hd5 file here or click to browse</p>
+            </div>
+            
+            <!-- File Input (Hidden) -->
+            <input type="file" name="file" id="file-input" class="file-input" accept=".hd5">
+            
+            <!-- Submit Button -->
+            <button type="submit" class="submit-button" id="submit-button" disabled>Submit</button>
+        </form>
+    </div>
+
+    <script>
+        const dropZone = document.getElementById('drop-zone');
+        const fileInput = document.getElementById('file-input');
+        const dropZoneText = document.getElementById('drop-zone-text');
+        const submitButton = document.getElementById('submit-button');
+
+        dropZone.addEventListener('click', () => fileInput.click());
+
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.style.backgroundColor = '#d9d9d9';
+        });
+
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.style.backgroundColor = '#e9ecef';
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.style.backgroundColor = '#e9ecef';
+            const files = e.dataTransfer.files;
+            if (files.length) {
+                fileInput.files = files;
+                dropZoneText.textContent = files[0].name;
+                submitButton.disabled = false;
+            }
+        });
+
+        fileInput.addEventListener('change', () => {
+            if (fileInput.files.length) {
+                dropZoneText.textContent = fileInput.files[0].name;
+                submitButton.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
+

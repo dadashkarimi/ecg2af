@@ -1,0 +1,87 @@
+/* styles.css */
+
+body {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f2f5;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    max-width: 500px;
+    width: 100%;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.drop-zone {
+    border: 2px dashed #007bff;
+    padding: 40px;
+    background-color: #e9ecef;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    position: relative;
+}
+
+.drop-zone:hover {
+    background-color: #d9d9d9;
+}
+
+.drop-zone p {
+    font-size: 16px;
+    color: #6c757d;
+    margin: 0;
+}
+
+.file-input {
+    display: none;
+}
+
+.submit-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.submit-button:hover {
+    background-color: #0056b3;
+}
+
+table {
+    width: 100%;
+    margin-bottom: 20px;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+table, th, td {
+    border: 1px solid black;
+    padding: 10px;
+}
+
+#chartContainer {
+    width: 100%;
+    text-align: left;
+}
+
+canvas {
+    width: 100% !important;
+    height: auto !important;
+}
+
