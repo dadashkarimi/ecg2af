@@ -83,7 +83,7 @@ To run this app locally:
 Run the Flask app:
 
     ```bash
-   python app.py
+   python app.py```
 
 Open the app: Go to http://127.0.0.1:5000 in your browser.
 
