@@ -77,7 +77,7 @@ To run this app locally:
 ## Install dependencies:
 
    ```bash
-   pip install -r requirements.txt
+   pip install -r requirements.txt```
 
 
 Run the Flask app:
