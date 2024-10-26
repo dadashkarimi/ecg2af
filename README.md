@@ -76,19 +76,19 @@ To run this app locally:
 
 ## Install dependencies:
 
-bash
-Copy code
-```
-pip install -r requirements.txt
+   ```bash
+   pip install -r requirements.txt
+   Run the Flask app:
+
+
 Run the Flask app:
-```
-Run the Flask app:
-```
-python app.py```
+    ```bash
+   python app.py
 
 Open the app: Go to http://127.0.0.1:5000 in your browser.
 
 ## Error Handling
+
 We’ve designed the app to handle errors gracefully. Here’s how it responds:
 
 Invalid File Format: The app will prompt you to upload a valid .hd5 ECG file if an incorrect format is uploaded.
