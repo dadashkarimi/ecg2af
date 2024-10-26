@@ -10,18 +10,26 @@
 <body>
     <div class="container">
         <h2>Upload ECG File</h2>
-        
+
         <!-- Drag-and-Drop Zone -->
         <form id="upload-form" method="POST" action="/upload" enctype="multipart/form-data">
             <div class="drop-zone" id="drop-zone">
                 <p id="drop-zone-text">Drag and drop your .hd5 file here or click to browse</p>
             </div>
-            
+
             <!-- File Input (Hidden) -->
             <input type="file" name="file" id="file-input" class="file-input" accept=".hd5">
-            
+
+            <!-- Progress Bar -->
+            <div id="progress-container" style="display: none; margin-top: 20px;">
+                <div id="progress-bar" style="width: 0%; height: 20px; background-color: #007bff; border-radius: 5px;"></div>
+            </div>
+
             <!-- Submit Button -->
             <button type="submit" class="submit-button" id="submit-button" disabled>Submit</button>
+            
+            <!-- Success/Failure Message -->
+            <p id="status-message" style="display: none; margin-top: 20px;"></p>
         </form>
     </div>
 
@@ -30,6 +38,10 @@
         const fileInput = document.getElementById('file-input');
         const dropZoneText = document.getElementById('drop-zone-text');
         const submitButton = document.getElementById('submit-button');
+        const progressContainer = document.getElementById('progress-container');
+        const progressBar = document.getElementById('progress-bar');
+        const uploadForm = document.getElementById('upload-form');
+        const statusMessage = document.getElementById('status-message');
 
         dropZone.addEventListener('click', () => fileInput.click());
 
@@ -58,6 +70,71 @@
                 dropZoneText.textContent = fileInput.files[0].name;
                 submitButton.disabled = false;
             }
+        });
+
+        // Handle the form submission with a progress bar
+        uploadForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const file = fileInput.files[0];
+            if (!file) return;
+
+            // Reset the status message
+            statusMessage.style.display = 'none';
+
+            // Create a new FormData object
+            const formData = new FormData();
+            formData.append('file', file);
+
+            // Show the progress bar
+            progressContainer.style.display = 'block';
+            progressBar.style.width = '0%';
+
+            // Create an XMLHttpRequest to monitor the progress
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', '/upload', true);
+
+            // Update progress bar as upload progresses
+            xhr.upload.onprogress = (event) => {
+                if (event.lengthComputable) {
+                    const percentComplete = (event.loaded / event.total) * 100;
+                    progressBar.style.width = percentComplete + '%';
+                }
+            };
+
+            // Handle the response
+            xhr.onload = () => {
+                progressContainer.style.display = 'none';
+                if (xhr.status === 200) {
+                    // Display success message
+                    statusMessage.textContent = "File uploaded successfully! Processing...";
+                    statusMessage.style.display = 'block';
+                    statusMessage.style.color = 'green';
+
+                    // Reset form and progress bar
+                    uploadForm.reset();
+                    dropZoneText.textContent = "Drag and drop your .hd5 file here or click to browse";
+                    submitButton.disabled = true;
+
+                    // Optional: Redirect to a different URL (e.g., results page) if needed
+                    window.location.href = "/results";
+                } else {
+                    // Display error message
+                    statusMessage.textContent = "File upload failed. Please try again.";
+                    statusMessage.style.display = 'block';
+                    statusMessage.style.color = 'red';
+                }
+            };
+
+            xhr.onerror = () => {
+                progressContainer.style.display = 'none';
+                statusMessage.textContent = "An error occurred during the upload. Please try again.";
+                statusMessage.style.display = 'block';
+                statusMessage.style.color = 'red';
+            };
+
+            // Send the form data
+            xhr.send(formData);
         });
     </script>
 </body>

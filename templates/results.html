@@ -33,14 +33,6 @@
                 <td>Age Prediction</td>
                 <td>{{ "%.4f" | format(age_pred) }}</td>
             </tr>
-            <tr>
-                <td>AF In Read (No)</td>
-                <td>{{ "%.4f" | format(af_read_no) }}</td>
-            </tr>
-            <tr>
-                <td>AF In Read (Yes)</td>
-                <td>{{ "%.4f" | format(af_read_yes) }}</td>
-            </tr>
         </table>
 
         <!-- Bar Chart -->
@@ -55,30 +47,24 @@
             var predictionChart = new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: ['AF Risk', 'Sex (Male)', 'Sex (Female)', 'Age', 'AF In Read (No)', 'AF In Read (Yes)'],
+                    labels: ['AF Risk', 'Sex (Male)', 'Sex (Female)', 'Age'],
                     datasets: [{
                         label: 'Prediction Values',
                         data: [
                             {{ af_risk }},
                             {{ sex_pred_male }},
                             {{ sex_pred_female }},
-                            {{ age_pred }},
-                            {{ af_read_no }},
-                            {{ af_read_yes }}
+                            {{ age_pred }}
                         ],
                         backgroundColor: [
                             'rgba(75, 192, 192, 0.2)',
                             'rgba(54, 162, 235, 0.2)',
-                            'rgba(255, 206, 86, 0.2)',
-                            'rgba(75, 192, 192, 0.2)',
                             'rgba(255, 99, 132, 0.2)',
                             'rgba(153, 102, 255, 0.2)'
                         ],
                         borderColor: [
                             'rgba(75, 192, 192, 1)',
                             'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)',
-                            'rgba(75, 192, 192, 1)',
                             'rgba(255, 99, 132, 1)',
                             'rgba(153, 102, 255, 1)'
                         ],
