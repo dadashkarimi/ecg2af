@@ -1,30 +1,28 @@
 # ECG2AF Model Web Application
 
-Welcome to the **ECG2AF Prediction Web App**! This app demonstrates how we can deploy a clinical AI model, ECG2AF, which predicts the risk of developing atrial fibrillation (AF) from ECG data.
+Welcome to my **ECG2AF Prediction Web App**! This app demonstrates how we can deploy a simple clinical AI model, ECG2AF, which predicts the risk of developing atrial fibrillation (AF) from ECG data.
 
-This app was built as part of a take-home assignment for the ML4H Senior ML Engineer Position and is designed to showcase skills in deploying machine learning models within a user-friendly web interface. In this guide, you’ll learn how to set up, run, and use the app.
+In this tutorial, you’ll learn how to set up, run, and use the app.
 
 ![Upload ECG File](fig/upload.png)
 
 ## Background
 
-Our team focuses on developing clinical AI methods, and ECG2AF is one of our models built to predict AF risk based on ECG data. This app allows users to upload an ECG file, process it with the ECG2AF model, and view the prediction results.
-
-This assignment simulates real-world tasks for deploying machine learning models in an application. It reflects objectives like technical skills, problem-solving, and creating a smooth user experience.
+AI is widely used in clinical applications to improve risk stratification and intervention. For example, neuroscientists and psychiatrists use AI to understand how the human brain functions and to identify the roots of certain psychopathological disorders. However, this project focuses on cardiovascular disease, specifically aiming to predict AF risk based on ECG data.
+I launched this app on AWS, enabling users to upload an ECG file, process it with the ECG2AF model, and view the prediction results.
 
 ### Objective
 
 1. **Create a web application** that allows users to:
    - Upload an ECG file (.hd5 format).
-   - Process the uploaded ECG using the ECG2AF model.
+   - Process the uploaded ECG using a pre-trained ECG2AF model.
    - Display the prediction results, including four output values.
-2. **Scalability Question**: Explain how you would scale this solution to handle larger data volumes and more users (details in the "Scalability Considerations" section below).
 
 ## How It Works
 
 1. **Upload your ECG file** in `.hd5` format by dragging and dropping it into the upload area.
 2. **Process with ECG2AF**: The model will process the file in real time.
-3. **View Predictions**: The app displays four predictions for each ECG file, including AF risk and demographic estimations.
+3. **View Predictions**: At the end, the app displays four predictions for each ECG file, including AF risk and demographic estimations.
 
 ### Prediction Outputs
 
