@@ -71,29 +71,30 @@ To run this app locally:
 1. **Clone the repository**:
    ```bash
    git clone https://github.com/your-username/ecg2af.git
-   cd ecg2af```
+   cd ecg2af
+   ```
 
-
-## Install dependencies:
-
+2. **Install dependencies**:
    ```bash
-   pip install -r requirements.txt```
+   pip install -r requirements.txt
+   ```
 
+3. **Run the Flask app**:
+   ```bash
+   python app.py
+   ```
 
-Run the Flask app:
-
-    ```bash
-   python app.py```
-
-Open the app: Go to http://127.0.0.1:5000 in your browser.
+4. **Open the app**: Go to `http://127.0.0.1:5000` in your browser.
 
 ## Error Handling
 
 We’ve designed the app to handle errors gracefully. Here’s how it responds:
+- **Invalid File Format**: The app will prompt you to upload a valid `.hd5` ECG file if an incorrect format is uploaded.
+- **Server Errors**: Any server errors during processing will display a user-friendly error message.
 
-Invalid File Format: The app will prompt you to upload a valid .hd5 ECG file if an incorrect format is uploaded.
-Server Errors: Any server errors during processing will display a user-friendly error message.
-Resources and References
-ECG2AF Model: GitHub Link
-Model Setup: We used ML4H Docker container ghcr.io/broadinstitute/ml4h:tf2.9-latest-cpu for easy library setup.
+## Resources and References
+
+- **ECG2AF Model**: [GitHub Link](https://github.com/broadinstitute/ml4h/tree/master/model_zoo/ECG2AF)
+- **Model Setup**: We used the ML4H Docker container `ghcr.io/broadinstitute/ml4h:tf2.9-latest-cpu` for easy library setup.
+
 Happy predicting, and let us know if you have any questions!
