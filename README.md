@@ -71,7 +71,7 @@ To run this app locally:
 1. **Clone the repository**:
    ```bash
    git clone https://github.com/your-username/ecg2af.git
-   cd ecg2af
+   cd ecg2af```
 
 
 ## Install dependencies:
