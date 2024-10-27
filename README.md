@@ -51,7 +51,7 @@ The current version can support multiple file submissions. Yet, they will be pro
 1. **Batch Processing**: Process multiple ECG files simultaneously using a distributed system or Python's built-in ``multiprocessing`` functions like ``Pool``. 
 2. **Database and Caching**: Store previously uploaded `.hd5` files on disk for each user separately, allowing them to choose from their past uploads to avoid reprocessing
 3. **Load Balancing**: Use Docker containers along with load balancers to distribute user traffic evenly and handle large volumes efficiently.
-4. **Cloud Deployment**: Since we have deployed our tool on AWS, perhaps using other built-in functionalities like  Elastic Load Balancer (ELB) can help us on this. 
+4. **Cloud Deployment**: Since we have deployed our tool on AWS, perhaps using other built-in functionalities like  Elastic Load Balancer (ELB) can help us with this. However, according to AWS documentation when you use Elastic Load Balancing with your Auto Scaling group, it's not necessary to register individual EC2 instances with the load balancer. Instances that are launched by your Auto Scaling group are automatically registered with the load balancer. Likewise, instances that are terminated by your Auto Scaling group are automatically deregistered from the load balancer.
 
 ## Technical Requirements
 
