@@ -4,7 +4,7 @@ Welcome to my **ECG2AF Prediction Web App**! This app demonstrates how we can de
 
 In this tutorial, you’ll learn how to set up, run, and use the app.
 
-![Upload ECG File](fig/upload.png)
+![Upload ECG File](fig/upload2.png)
 
 ## Background
 
