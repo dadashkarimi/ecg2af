@@ -7,7 +7,7 @@ To run this app locally, place `app.py`, `ecg_model.py`, and the required folder
 I developed this project using a combination of `vim` and `VS Code`, utilizing GitHub Copilot for some function autocompletion. The app is currently deployed on an `EC2` instance (Linux `t2.medium`), with an attached 32 GB `gp3` volume for additional storage. Additionally, I’ve set the Nginx file upload limit to 500 MB to accommodate larger files.
 
 
-In this tutorial, you’ll learn how to set up, run, and use the app.
+In this tutorial, you’ll learn how to set up, run, and use the app. Here is an outline of the first page that can submit multiple `.hd5` files to the server. 
 
 ![Upload ECG File](fig/uploads2.png)
 
