@@ -96,5 +96,21 @@ Happy predicting, and let us know if you have any questions! My email is `javidd
 ## Visualization and Results
 The charts in the application that you see after submission, are bar charts created using the `Chart.js` library, an open source JavaScript package used for creating interactive and visually appealing data visualizations (see [chartjs](https://www.chartjs.org/)). Each chart presents predictions related to the uploaded .hd5 files, including AF risk, sex prediction (male and female), and age prediction values. 
 
+## Adding Nginx to Flask with Docker
 
+Nginx acts as a reverse proxy for our Flask app in Docker, handling HTTP requests on port 80 and forwarding them to Flask on 5000. This setup is more secure and efficient compared to running Flask alone.
+
+### Benefits of Using Nginx
+
+- Security: Nginx hides the Flask server from direct internet exposure.
+
+- Load Balancing: Can manage traffic efficiently and scale easily.
+
+- Static File Handling: Serves static files faster, reducing Flask's load.
+
+- Production-Ready: Unlike Flask's dev server, Nginx handles multiple users reliably.
+
+# Why Not Just Flask?
+
+Running Flask alone is fine for testing, but it lacks the scalability, security, and robustness needed for production. Nginx fills those gaps effectively.
 
