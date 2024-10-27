@@ -13,10 +13,7 @@ I launched this app on AWS, enabling users to upload an ECG file, process it wit
 
 ### Objective
 
-**To Create a web application** that allows users to:
-   - Upload an ECG file (.hd5 format).
-   - Process the uploaded ECG using a pre-trained ECG2AF model.
-   - Display the prediction results, including four output values.
+Our objective is to allow users to: Upload an ECG file (.hd5 format), Process the uploaded ECG using a pre-trained ECG2AF model, and Display the prediction results, including four output values.
 
 ## How It Works
 
