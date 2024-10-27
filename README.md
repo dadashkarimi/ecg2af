@@ -101,16 +101,13 @@ The charts in the application that you see after submission, are bar charts crea
 Nginx acts as a reverse proxy for our Flask app in Docker, handling HTTP requests on port 80 and forwarding them to Flask on 5000. This setup is more secure and efficient compared to running Flask alone.
 
 ### Benefits of Using Nginx
+Running Flask alone is fine for testing, but it lacks the scalability, security, and robustness needed for production. Nginx fills those gaps effectively. 
+- **Security**: Nginx hides the Flask server from direct internet exposure.
 
-- Security: Nginx hides the Flask server from direct internet exposure.
+- **Load Balancing**: Can manage traffic efficiently and scale easily.
 
-- Load Balancing: Can manage traffic efficiently and scale easily.
+- **Static File Handling**: Serves static files faster, reducing Flask's load.
 
-- Static File Handling: Serves static files faster, reducing Flask's load.
+- **Production-Ready**: Unlike Flask's dev server, Nginx handles multiple users reliably.
 
-- Production-Ready: Unlike Flask's dev server, Nginx handles multiple users reliably.
-
-# Why Not Just Flask?
-
-Running Flask alone is fine for testing, but it lacks the scalability, security, and robustness needed for production. Nginx fills those gaps effectively.
 
