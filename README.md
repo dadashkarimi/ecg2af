@@ -1,6 +1,6 @@
 # ECG2AF Model Web Application
 
-Welcome to my **ECG2AF Prediction Web App**! This app demonstrates how we can deploy a simple clinical AI model, ECG2AF, which predicts the risk of developing atrial fibrillation (AF) from ECG data.
+Welcome to my **ECG2AF Prediction Web App**! This app demonstrates how we can deploy a simple clinical AI model, ECG2AF, which predicts the risk of developing atrial fibrillation (AF) from ECG data. To be able to run this app locally, `app.py` , `ecg_model.py` and the folders should be inside `app/` folder. `Dockerfile` and the `requirements.txt` inside the parent folder. 
 
 In this tutorial, you’ll learn how to set up, run, and use the app.
 
