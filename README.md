@@ -43,7 +43,7 @@ All you need to do is:
 
 ## Scalability Considerations
 
-The current version can support multiple file submissions. Yet, they will be processed in sequence. If we were to scale this solution for larger data volumes and a higher number of users, here’s what we’d consider:
+The current version supports multiple file submissions, but they are processed sequentially. While we recently moved the app to Nginx to balance requests, further scalability considerations remain. For handling larger data volumes and more users, here’s what we would consider next:
 
 1. **Batch Processing**: Process multiple ECG files simultaneously using a distributed system or Python's built-in ``multiprocessing`` functions like ``Pool``. 
 2. **Database and Caching**: Store previously uploaded `.hd5` files on disk for each user separately, allowing them to choose from their past uploads to avoid reprocessing
@@ -96,12 +96,15 @@ Happy predicting, and let us know if you have any questions! My email is `javidd
 ## Visualization and Results
 The charts in the application that you see after submission, are bar charts created using the `Chart.js` library, an open source JavaScript package used for creating interactive and visually appealing data visualizations (see [chartjs](https://www.chartjs.org/)). Each chart presents predictions related to the uploaded .hd5 files, including AF risk, sex prediction (male and female), and age prediction values. 
 
+We used ``ChatGPT 40 mini`` in order to create the css file and format the first page.
+
 ## Adding Nginx to Flask with Docker
 
-Nginx acts as a reverse proxy for our Flask app in Docker, handling HTTP requests on port 80 and forwarding them to Flask on 5000. This setup is more secure and efficient compared to running Flask alone.
+Nginx acts as a reverse proxy for our Flask app in Docker, handling HTTP requests on port `80` and forwarding them to Flask on 5000. So I set up the app on port 5000, but it can be accessible via default port `80` through Nginx. 
 
 ### Benefits of Using Nginx
-Running Flask alone is fine for testing, but it lacks the scalability, security, and robustness needed for production. Nginx fills those gaps effectively. 
+Running Flask alone is fine for testing, but it lacks the scalability, security, and robustness needed for production. Nginx fills those gaps effectively.
+
 - **Security**: Nginx hides the Flask server from direct internet exposure.
 
 - **Load Balancing**: Can manage traffic efficiently and scale easily.
@@ -110,4 +113,5 @@ Running Flask alone is fine for testing, but it lacks the scalability, security,
 
 - **Production-Ready**: Unlike Flask's dev server, Nginx handles multiple users reliably.
 
+Since previously I had deployed our `CAROT Project` on Nginx, it didn't take that much time from me! 
 
