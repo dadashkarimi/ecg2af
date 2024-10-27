@@ -94,7 +94,7 @@ We’ve designed the app to handle errors gracefully. Here’s how it responds:
 - **ECG2AF Model**: [GitHub Link](https://github.com/broadinstitute/ml4h/tree/master/model_zoo/ECG2AF)
 - **Model Setup**: We used the ML4H Docker container `ghcr.io/broadinstitute/ml4h:tf2.9-latest-cpu` for easy library setup.
 
-Happy predicting, and let us know if you have any questions!
+Happy predicting, and let us know if you have any questions! My email is `javiddadashkarimi@gmail.com`
 
 ## Visualization and Results
 The charts in the application that you see after submission, are bar charts created using the `Chart.js` library, an open source JavaScript package used for creating interactive and visually appealing data visualizations (see [chartjs](https://www.chartjs.org/)). Each chart presents predictions related to the uploaded .hd5 files, including AF risk, sex prediction (male and female), and age prediction values. 
