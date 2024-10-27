@@ -50,8 +50,8 @@ The current version can support multiple file submissions. Yet, they will be pro
 
 1. **Batch Processing**: Process multiple ECG files simultaneously using a distributed system or Python's built-in ``multiprocessing`` functions like ``Pool``. 
 2. **Database and Caching**: Store previously uploaded `.hd5` files on disk for each user separately, allowing them to choose from their past uploads to avoid reprocessing
-3. **Containerization and Load Balancing**: Use Docker containers along with load balancers to distribute user traffic evenly and handle large volumes efficiently.
-4. **Cloud Deployment**: Deploy to cloud platforms like AWS or Google Cloud with autoscaling to manage fluctuations in user demand.
+3. **Load Balancing**: Use Docker containers along with load balancers to distribute user traffic evenly and handle large volumes efficiently.
+4. **Cloud Deployment**: Since we have deployed our tool on AWS, perhaps using other built-in functionalities like  Elastic Load Balancer (ELB) can help us on this. 
 
 ## Technical Requirements
 
