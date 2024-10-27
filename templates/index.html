@@ -9,16 +9,16 @@
 </head>
 <body>
     <div class="container">
-        <h2>Upload ECG File</h2>
+        <h2>Upload ECG Files</h2>
 
         <!-- Drag-and-Drop Zone -->
         <form id="upload-form" method="POST" action="/upload" enctype="multipart/form-data">
             <div class="drop-zone" id="drop-zone">
-                <p id="drop-zone-text">Drag and drop your .hd5 file here or click to browse</p>
+                <p id="drop-zone-text">Drag and drop your .hd5 files here or click to browse</p>
             </div>
 
             <!-- File Input (Hidden) -->
-            <input type="file" name="file" id="file-input" class="file-input" accept=".hd5">
+            <input type="file" name="files" id="file-input" class="file-input" accept=".hd5" multiple>
 
             <!-- Progress Bar -->
             <div id="progress-container" style="display: none; margin-top: 20px;">
@@ -60,14 +60,14 @@
             const files = e.dataTransfer.files;
             if (files.length) {
                 fileInput.files = files;
-                dropZoneText.textContent = files[0].name;
+                dropZoneText.textContent = `${files.length} file(s) selected`;
                 submitButton.disabled = false;
             }
         });
 
         fileInput.addEventListener('change', () => {
             if (fileInput.files.length) {
-                dropZoneText.textContent = fileInput.files[0].name;
+                dropZoneText.textContent = `${fileInput.files.length} file(s) selected`;
                 submitButton.disabled = false;
             }
         });
@@ -76,15 +76,17 @@
         uploadForm.addEventListener('submit', (e) => {
             e.preventDefault();
 
-            const file = fileInput.files[0];
-            if (!file) return;
+            const files = fileInput.files;
+            if (files.length === 0) return;
 
             // Reset the status message
             statusMessage.style.display = 'none';
 
             // Create a new FormData object
             const formData = new FormData();
-            formData.append('file', file);
+            for (let i = 0; i < files.length; i++) {
+                formData.append('files', files[i]);
+            }
 
             // Show the progress bar
             progressContainer.style.display = 'block';
@@ -107,16 +109,16 @@
                 progressContainer.style.display = 'none';
                 if (xhr.status === 200) {
                     // Display success message
-                    statusMessage.textContent = "File uploaded successfully! Processing...";
+                    statusMessage.textContent = "Files uploaded successfully! Processing...";
                     statusMessage.style.display = 'block';
                     statusMessage.style.color = 'green';
 
                     // Reset form and progress bar
                     uploadForm.reset();
-                    dropZoneText.textContent = "Drag and drop your .hd5 file here or click to browse";
+                    dropZoneText.textContent = "Drag and drop your .hd5 files here or click to browse";
                     submitButton.disabled = true;
 
-                    // Optional: Redirect to a different URL (e.g., results page) if needed
+                    // Redirect to results page
                     window.location.href = "/results";
                 } else {
                     // Display error message

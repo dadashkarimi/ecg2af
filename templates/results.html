@@ -6,82 +6,86 @@
     <title>Prediction Results</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <div class="container">
+    <div class="container" style="margin-top: {{ '400px' if combined_results|length > 1 else '20px' }};"> <!-- Conditional margin -->
         <h2>Prediction Results</h2>
 
-        <!-- Prediction Table -->
-        <table>
-            <tr>
-                <th>Prediction</th>
-                <th>Value</th>
-            </tr>
-            <tr>
-                <td>AF Risk</td>
-                <td>{{ "%.4f" | format(af_risk) }}</td>
-            </tr>
-            <tr>
-                <td>Sex Prediction (Male)</td>
-                <td>{{ "%.4f" | format(sex_pred_male) }}</td>
-            </tr>
-            <tr>
-                <td>Sex Prediction (Female)</td>
-                <td>{{ "%.4f" | format(sex_pred_female) }}</td>
-            </tr>
-            <tr>
-                <td>Age Prediction</td>
-                <td>{{ "%.4f" | format(age_pred) }}</td>
-            </tr>
-        </table>
+        {% for result, filename in combined_results %}
+            <div class="result-section">
+                <h3>Results for File: {{ filename }}</h3>
+                <!-- Prediction Table -->
+                <table>
+                    <tr>
+                        <th>Prediction</th>
+                        <th>Value</th>
+                    </tr>
+                    <tr>
+                        <td>AF Risk</td>
+                        <td>{{ "%.4f" | format(result.af_risk) }}</td>
+                    </tr>
+                    <tr>
+                        <td>Sex Prediction (Male)</td>
+                        <td>{{ "%.4f" | format(result.sex_pred_male) }}</td>
+                    </tr>
+                    <tr>
+                        <td>Sex Prediction (Female)</td>
+                        <td>{{ "%.4f" | format(result.sex_pred_female) }}</td>
+                    </tr>
+                    <tr>
+                        <td>Age Prediction</td>
+                        <td>{{ "%.4f" | format(result.age_pred) }}</td>
+                    </tr>
+                </table>
 
-        <!-- Bar Chart -->
-        <h3>Prediction Chart</h3>
-        <div id="chartContainer">
-            <canvas id="predictionChart"></canvas>
-        </div>
-
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <script>
-            var ctx = document.getElementById('predictionChart').getContext('2d');
-            var predictionChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: ['AF Risk', 'Sex (Male)', 'Sex (Female)', 'Age'],
-                    datasets: [{
-                        label: 'Prediction Values',
-                        data: [
-                            {{ af_risk }},
-                            {{ sex_pred_male }},
-                            {{ sex_pred_female }},
-                            {{ age_pred }}
-                        ],
-                        backgroundColor: [
-                            'rgba(75, 192, 192, 0.2)',
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgba(255, 99, 132, 0.2)',
-                            'rgba(153, 102, 255, 0.2)'
-                        ],
-                        borderColor: [
-                            'rgba(75, 192, 192, 1)',
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 99, 132, 1)',
-                            'rgba(153, 102, 255, 1)'
-                        ],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true
+                <!-- Bar Chart -->
+                <h4>Prediction Chart</h4>
+                <div id="chartContainer{{ loop.index }}">
+                    <canvas id="predictionChart{{ loop.index }}"></canvas>
+                </div>
+                <script>
+                    var ctx{{ loop.index }} = document.getElementById('predictionChart{{ loop.index }}').getContext('2d');
+                    var predictionChart{{ loop.index }} = new Chart(ctx{{ loop.index }}, {
+                        type: 'bar',
+                        data: {
+                            labels: ['AF Risk', 'Sex (Male)', 'Sex (Female)', 'Age'],
+                            datasets: [{
+                                label: 'Prediction Values',
+                                data: [
+                                    {{ result.af_risk }},
+                                    {{ result.sex_pred_male }},
+                                    {{ result.sex_pred_female }},
+                                    {{ result.age_pred }}
+                                ],
+                                backgroundColor: [
+                                    'rgba(75, 192, 192, 0.2)',
+                                    'rgba(54, 162, 235, 0.2)',
+                                    'rgba(255, 99, 132, 0.2)',
+                                    'rgba(153, 102, 255, 0.2)'
+                                ],
+                                borderColor: [
+                                    'rgba(75, 192, 192, 1)',
+                                    'rgba(54, 162, 235, 1)',
+                                    'rgba(255, 99, 132, 1)',
+                                    'rgba(153, 102, 255, 1)'
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            },
+                            responsive: true,
+                            maintainAspectRatio: false
                         }
-                    },
-                    responsive: true,
-                    maintainAspectRatio: false
-                }
-            });
-        </script>
+                    });
+                </script>
+            </div>
+        {% endfor %}
 
         <a href="/">Go back to upload another file</a>
     </div>
