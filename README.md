@@ -17,9 +17,9 @@ Our objective is to allow users to: Upload an ECG file (.hd5 format), Process th
 
 ## How It Works
 
-1. **Upload your ECG file** in `.hd5` format by dragging and dropping it into the upload area.
+1. **Upload your ECG file(s)** in `.hd5` format by dragging and dropping it into the upload area.
 2. **Process with ECG2AF**: The model will process the file in real time.
-3. **View Predictions**: At the end, the app displays four predictions for each ECG file, including AF risk and demographic estimations.
+3. **View Predictions**: At the end, the app displays four predictions for each ECG file, including AF risk and demographic estimations. You will also see charts corrosponding to each result for better interepretation. 
 
 ### Prediction Outputs
 
@@ -47,7 +47,7 @@ The current version can support multiple file submissions. Yet, they will be pro
 
 1. **Batch Processing**: Process multiple ECG files simultaneously using a distributed system or Python's built-in ``multiprocessing`` functions like ``Pool``. 
 2. **Database and Caching**: Store previously uploaded `.hd5` files on disk for each user separately, allowing them to choose from their past uploads to avoid reprocessing
-3. **Cloud Deployment and Load Balancing**: Since we have deployed our tool on AWS, perhaps using other built-in functionalities like  Elastic Load Balancer (ELB) can help us with this. However, according to AWS documentation when you use Elastic Load Balancing with your Auto Scaling group, it's not necessary to register individual EC2 instances with the load balancer. Instances that are launched by your Auto Scaling group are automatically registered with the load balancer. Likewise, instances that are terminated by your Auto Scaling group are automatically deregistered from the load balancer.
+3. **Cloud Deployment and Load Balancing**: Since we have deployed our tool on AWS, perhaps using other built-in functionalities like  Elastic Load Balancer (ELB) can help us with this. However, according to AWS documentation when you use Elastic Load Balancing with your Auto Scaling group, ``it's not necessary to register individual EC2 instances with the load balancer. Instances that are launched by your Auto Scaling group are automatically registered with the load balancer``. So we assumed, ELB is already supported for our EC2 instance.  
 
 ## Technical Requirements
 
