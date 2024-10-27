@@ -46,10 +46,10 @@ All you need to do is:
 
 ## Scalability Considerations
 
-If we were to scale this solution for larger data volumes and a higher number of users, here’s what we’d consider:
+The current version can support multiple file submissions. Yet, they will be processed in sequence. If we were to scale this solution for larger data volumes and a higher number of users, here’s what we’d consider:
 
-1. **Batch Processing**: Process multiple ECG files simultaneously using a distributed system to handle large workloads.
-2. **Database and Caching**: Store past results to avoid reprocessing, and use caching to speed up repeated requests.
+1. **Batch Processing**: Process multiple ECG files simultaneously using a distributed system or Python's built-in ``multiprocessing`` functions like ``Pool``. 
+2. **Database and Caching**: Store previously uploaded `.hd5` files on disk for each user separately, allowing them to choose from their past uploads to avoid reprocessing
 3. **Containerization and Load Balancing**: Use Docker containers along with load balancers to distribute user traffic evenly and handle large volumes efficiently.
 4. **Cloud Deployment**: Deploy to cloud platforms like AWS or Google Cloud with autoscaling to manage fluctuations in user demand.
 
