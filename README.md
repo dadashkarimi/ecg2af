@@ -11,7 +11,7 @@ In this tutorial, you’ll learn how to set up, run, and use the app.
 AI is widely used in clinical applications to improve risk stratification and intervention. For example, neuroscientists and psychiatrists use AI to understand how the human brain functions and to identify the roots of certain psychopathological disorders. However, this project focuses on cardiovascular disease, specifically aiming to predict AF risk based on ECG data.
 I launched this app on AWS, enabling users to upload an ECG file, process it with the ECG2AF model, and view the prediction results.
 
-### Objective
+## Objective
 
 Our objective is to allow users to: Upload an ECG file (.hd5 format), Process the uploaded ECG using a pre-trained ECG2AF model, and Display the prediction results, including four output values.
 
