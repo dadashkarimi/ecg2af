@@ -18,8 +18,8 @@ Our objective is to allow users to: Upload an ECG file (.hd5 format), Process th
 ## How It Works
 
 1. **Upload your ECG file(s)** in `.hd5` format by dragging and dropping it into the upload area.
-2. **Process with ECG2AF**: The model will process the file in real time.
-3. **View Predictions**: At the end, the app displays four predictions for each ECG file, including AF risk and demographic estimations. You will also see charts corrosponding to each result for better interepretation. 
+2. **Process with ECG2AF**: The model will process the file in real-time.
+3. **View Predictions**: At the end, the app displays four predictions for each ECG file, including AF risk and demographic estimations. You will also see charts corresponding to each result for better interpretation. 
 
 ### Prediction Outputs
 
@@ -34,7 +34,7 @@ Each prediction result includes a probability or estimate, displayed in both a t
 
 ## Try It Out!
 
-The app is live [here](http://34.204.36.84:5000/)! 
+The app is live [here](http://34.204.36.84/)! 
 
 All you need to do is:
 1. Open the link.
@@ -94,7 +94,7 @@ We’ve designed the app to handle errors gracefully. Here’s how it responds:
 Happy predicting, and let us know if you have any questions! My email is `javiddadashkarimi@gmail.com`
 
 ## Visualization and Results
-The charts in the application that you see after submission, are bar charts created using the `Chart.js` library, an open source JavaScript package used for creating interactive and visually appealing data visualizations (see [chartjs](https://www.chartjs.org/)). Each chart presents predictions related to the uploaded .hd5 files, including AF risk, sex prediction (male and female), and age prediction values. 
+The charts in the application that you see after submission, are bar charts created using the `Chart.js` library, an open-source JavaScript package used for creating interactive and visually appealing data visualizations (see [chartjs](https://www.chartjs.org/)). Each chart presents predictions related to the uploaded .hd5 files, including AF risk, sex prediction (male and female), and age prediction values. 
 
 We used ``ChatGPT 40 mini`` in order to create the css file and format the first page.
 
